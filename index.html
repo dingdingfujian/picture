@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>图片查看器</title>
+    <style type="text/css">
+        *{
+            padding: 0;margin:0;               /*去除所有边距*/
+        }
+        #main{
+            position: relative;
+        }
+        .pin{
+            padding: 15px 0 0 15px;
+            float:left;                        /*向左浮动*/
+            transition: transform 1s;          /*过渡动画时间*/
+            -moz-transition: transform 1s;     /* Firefox 4 */
+            -webkit-transition: transform 1s;  /* Safari 和 Chrome */
+            -o-transition: transform 1s;       /* Opera */
+        }
+        .box{
+            padding: 10px;
+            border:1px solid #ccc;             /*边框样式*/
+            box-shadow: 0 0 6px #ccc;          /*盒子的阴影效果*/
+            border-radius: 5px;                /*圆角矩形*/
+        }
+        .box img{
+            width:162px;                       /*图片大小*/
+            height:auto;
+        }
+        .ab{
+            display: none;                     /*操作栏样式*/
+            width: 100%;
+            height: 15px;
+            border-radius: 20px;
+        }
+        .a {
+            position: relative;                /*每个操作盒子的样式*/
+            left:15px;
+            float: left;
+            margin:0px 15px;
+            width: 20px;
+            height:100% ;
+        }
+        .i{
+            transition: transform 1s;          /*每个操作图片过渡动画时间*/
+            -moz-transition: transform 1s;     /* Firefox 4 */
+            -webkit-transition: transform 1s;  /* Safari 和 Chrome */
+            -o-transition: transform 1s;       /* Opera */
+            width: 16px;
+            height: auto;
+            background: no-repeat center center ;
+        }
+        .ab .i:hover{
+            transform:rotate(360deg) scale(1.3);/*操作图片的悬停动画*/
+            -webkit-transform:rotate(360deg) scale(1.3);
+        }
+       #main #select{
+            transform:scale(2,2);              /*选中的图片的悬停动画*/
+            -ms-transform:scale(2,2);          /* IE 9 */
+            -moz-transform:scale(2,2);         /* Firefox */
+            -webkit-transform:scale(2,2);      /* Safari and Chrome */
+            -o-transform:scale(2,2);           /* Opera */
+            z-index: 100;
+            padding: 0px;
+        }
+        #select .box{
+            padding: 2px 2px 0px 2px;           /*选中的图片的内边距*/
+        }
+        #ab{
+            display: block;                     /*操作栏显示时的样式*/
+            width: 100%;
+            height: 15px;
+            border-radius: 20px;
+        }
+    </style>
+    <script src="js.js"></script>
+</head>
+<body>
+<div id="main">                                  <!--预先放进body的盒子，当鼠标滚动时自动向下增加盒子-->
+    <div class="pin" >
+        <div class="box">
+            <img src="./images/1.jpg" class="img"/>
+        </div>
+        <div class="ab">
+            <div class="a f" title="放大">
+               <img src="./images/p.png" class="i"/>
+            </div>
+            <div class="a m" title="旋转">
+                <img src="./images/t.png" class="i"/>
+            </div>
+            <div class="a l" title="缩小">
+                <img src="./images/d.png" class="i"/>
+            </div>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="./images/2.jpg" class="img"/>
+        </div>
+        <div class="ab">
+            <div class="a f" title="放大">
+                <img src="./images/p.png" class="i"/>
+            </div>
+            <div class="a m" title="旋转">
+                <img src="./images/t.png" class="i"/>
+            </div>
+            <div class="a l" title="缩小">
+                <img src="./images/d.png" class="i"/>
+            </div>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="./images/3.jpg" class="img"/>
+        </div>
+        <div class="ab">
+            <div class="a f" title="放大">
+                <img src="./images/p.png" class="i"/>
+            </div>
+            <div class="a m" title="旋转">
+                <img src="./images/t.png" class="i"/>
+            </div>
+            <div class="a l" title="缩小">
+                <img src="./images/d.png" class="i"/>
+            </div>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="./images/4.jpg" class="img"/>
+        </div>
+        <div class="ab">
+            <div class="a f" title="放大">
+                <img src="./images/p.png" class="i"/>
+            </div>
+            <div class="a m" title="旋转">
+                <img src="./images/t.png" class="i"/>
+            </div>
+            <div class="a l" title="缩小">
+                <img src="./images/d.png" class="i"/>
+            </div>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="./images/5.jpg" class="img"/>
+        </div>
+        <div class="ab">
+            <div class="a f" title="放大">
+                <img src="./images/p.png" class="i"/>
+            </div>
+            <div class="a m" title="旋转">
+                <img src="./images/t.png" class="i"/>
+            </div>
+            <div class="a l" title="缩小">
+                <img src="./images/d.png" class="i"/>
+            </div>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="./images/6.jpg" class="img"/>
+        </div>
+        <div class="ab">
+            <div class="a f" title="放大">
+                <img src="./images/p.png" class="i"/>
+            </div>
+            <div class="a m" title="旋转">
+                <img src="./images/t.png" class="i"/>
+            </div>
+            <div class="a l" title="缩小">
+                <img src="./images/d.png" class="i"/>
+            </div>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="./images/7.jpg" class="img"/>
+        </div>
+        <div class="ab">
+            <div class="a f" title="放大">
+                <img src="./images/p.png" class="i"/>
+            </div>
+            <div class="a m" title="旋转">
+                <img src="./images/t.png" class="i"/>
+            </div>
+            <div class="a l" title="缩小">
+                <img src="./images/d.png" class="i"/>
+            </div>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="./images/8.jpg" class="img"/>
+        </div>
+        <div class="ab">
+            <div class="a f" title="放大">
+                <img src="./images/p.png" class="i"/>
+            </div>
+            <div class="a m" title="旋转">
+                <img src="./images/t.png" class="i"/>
+            </div>
+            <div class="a l" title="缩小">
+                <img src="./images/d.png" class="i"/>
+            </div>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="./images/9.jpg" class="img"/>
+        </div>
+        <div class="ab">
+            <div class="a f" title="放大">
+                <img src="./images/p.png" class="i"/>
+            </div>
+            <div class="a m" title="旋转">
+                <img src="./images/t.png" class="i"/>
+            </div>
+            <div class="a l" title="缩小">
+                <img src="./images/d.png" class="i"/>
+            </div>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="./images/10.jpg" class="img"/>
+        </div>
+        <div class="ab">
+            <div class="a f" title="放大">
+                <img src="./images/p.png" class="i"/>
+            </div>
+            <div class="a m" title="旋转">
+                <img src="./images/t.png" class="i"/>
+            </div>
+            <div class="a l" title="缩小">
+                <img src="./images/d.png" class="i"/>
+            </div>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="./images/11.jpg" class="img"/>
+        </div>
+        <div class="ab">
+            <div class="a f" title="放大">
+                <img src="./images/p.png" class="i"/>
+            </div>
+            <div class="a m" title="旋转">
+                <img src="./images/t.png" class="i"/>
+            </div>
+            <div class="a l" title="缩小">
+                <img src="./images/d.png" class="i"/>
+            </div>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="./images/12.jpg" class="img"/>
+        </div>
+        <div class="ab">
+            <div class="a f" title="放大">
+                <img src="./images/p.png" class="i"/>
+            </div>
+            <div class="a m" title="旋转">
+                <img src="./images/t.png" class="i"/>
+            </div>
+            <div class="a l" title="缩小">
+                <img src="./images/d.png" class="i"/>
+            </div>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="./images/13.jpg" class="img"/>
+        </div>
+        <div class="ab">
+            <div class="a f" title="放大">
+                <img src="./images/p.png" class="i"/>
+            </div>
+            <div class="a m" title="旋转">
+                <img src="./images/t.png" class="i"/>
+            </div>
+            <div class="a l" title="缩小">
+                <img src="./images/d.png" class="i"/>
+            </div>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="./images/14.jpg" class="img"/>
+        </div>
+        <div class="ab">
+            <div class="a f" title="放大">
+                <img src="./images/p.png" class="i"/>
+            </div>
+            <div class="a m" title="旋转">
+                <img src="./images/t.png" class="i"/>
+            </div>
+            <div class="a l" title="缩小">
+                <img src="./images/d.png" class="i"/>
+            </div>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="./images/15.jpg" class="img"/>
+        </div>
+        <div class="ab">
+            <div class="a f" title="放大">
+                <img src="./images/p.png" class="i"/>
+            </div>
+            <div class="a m" title="旋转">
+                <img src="./images/t.png" class="i"/>
+            </div>
+            <div class="a l" title="缩小">
+                <img src="./images/d.png" class="i"/>
+            </div>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="./images/16.jpg" class="img"/>
+        </div>
+        <div class="ab">
+            <div class="a f" title="放大">
+                <img src="./images/p.png" class="i"/>
+            </div>
+            <div class="a m" title="旋转">
+                <img src="./images/t.png" class="i"/>
+            </div>
+            <div class="a l" title="缩小">
+                <img src="./images/d.png" class="i"/>
+            </div>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="./images/17.jpg" class="img"/>
+        </div>
+        <div class="ab">
+            <div class="a f" title="放大">
+                <img src="./images/p.png" class="i"/>
+            </div>
+            <div class="a m" title="旋转">
+                <img src="./images/t.png" class="i"/>
+            </div>
+            <div class="a l" title="缩小">
+                <img src="./images/d.png" class="i"/>
+            </div>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="./images/18.jpg" class="img"/>
+        </div>
+        <div class="ab">
+            <div class="a f" title="放大">
+                <img src="./images/p.png" class="i"/>
+            </div>
+            <div class="a m" title="旋转">
+                <img src="./images/t.png" class="i"/>
+            </div>
+            <div class="a l" title="缩小">
+                <img src="./images/d.png" class="i"/>
+            </div>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="./images/19.jpg" class="img"/>
+        </div>
+        <div class="ab">
+            <div class="a f" title="放大">
+                <img src="./images/p.png" class="i"/>
+            </div>
+            <div class="a m" title="旋转">
+                <img src="./images/t.png" class="i"/>
+            </div>
+            <div class="a l" title="缩小">
+                <img src="./images/d.png" class="i"/>
+            </div>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="./images/20.jpg" class="img"/>
+        </div>
+        <div class="ab">
+            <div class="a f" title="放大">
+                <img src="./images/p.png" class="i"/>
+            </div>
+            <div class="a m" title="旋转">
+                <img src="./images/t.png" class="i"/>
+            </div>
+            <div class="a l" title="缩小">
+                <img src="./images/d.png" class="i"/>
+            </div>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="./images/21.jpg" class="img"/>
+        </div>
+        <div class="ab">
+            <div class="a f" title="放大">
+                <img src="./images/p.png" class="i"/>
+            </div>
+            <div class="a m" title="旋转">
+                <img src="./images/t.png" class="i"/>
+            </div>
+            <div class="a l" title="缩小">
+                <img src="./images/d.png" class="i"/>
+            </div>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="./images/14.jpg" class="img"/>
+        </div>
+        <div class="ab">
+            <div class="a f" title="放大">
+                <img src="./images/p.png" class="i"/>
+            </div>
+            <div class="a m" title="旋转">
+                <img src="./images/t.png" class="i"/>
+            </div>
+            <div class="a l" title="缩小">
+                <img src="./images/d.png" class="i"/>
+            </div>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="./images/15.jpg" class="img"/>
+        </div>
+        <div class="ab">
+            <div class="a f" title="放大">
+                <img src="./images/p.png" class="i"/>
+            </div>
+            <div class="a m" title="旋转">
+                <img src="./images/t.png" class="i"/>
+            </div>
+            <div class="a l" title="缩小">
+                <img src="./images/d.png" class="i"/>
+            </div>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="./images/12.jpg" class="img"/>
+        </div>
+        <div class="ab">
+            <div class="a f" title="放大">
+                <img src="./images/p.png" class="i"/>
+            </div>
+            <div class="a m" title="旋转">
+                <img src="./images/t.png" class="i"/>
+            </div>
+            <div class="a l" title="缩小">
+                <img src="./images/d.png" class="i"/>
+            </div>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="./images/17.jpg" class="img"/>
+        </div>
+        <div class="ab">
+            <div class="a f" title="放大">
+                <img src="./images/p.png" class="i"/>
+            </div>
+            <div class="a m" title="旋转">
+                <img src="./images/t.png" class="i"/>
+            </div>
+            <div class="a l" title="缩小">
+                <img src="./images/d.png" class="i"/>
+            </div>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="./images/14.jpg" class="img"/>
+        </div>
+        <div class="ab">
+            <div class="a f" title="放大">
+                <img src="./images/p.png" class="i"/>
+            </div>
+            <div class="a m" title="旋转">
+                <img src="./images/t.png" class="i"/>
+            </div>
+            <div class="a l" title="缩小">
+                <img src="./images/d.png" class="i"/>
+            </div>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="./images/15.jpg" class="img"/>
+        </div>
+        <div class="ab">
+            <div class="a f" title="放大">
+                <img src="./images/p.png" class="i"/>
+            </div>
+            <div class="a m" title="旋转">
+                <img src="./images/t.png" class="i"/>
+            </div>
+            <div class="a l" title="缩小">
+                <img src="./images/d.png" class="i"/>
+            </div>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="./images/4.jpg" class="img"/>
+        </div>
+        <div class="ab">
+            <div class="a f" title="放大">
+                <img src="./images/p.png" class="i"/>
+            </div>
+            <div class="a m" title="旋转">
+                <img src="./images/t.png" class="i"/>
+            </div>
+            <div class="a l" title="缩小">
+                <img src="./images/d.png" class="i"/>
+            </div>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="./images/17.jpg" class="img"/>
+        </div>
+        <div class="ab">
+            <div class="a f" title="放大">
+                <img src="./images/p.png" class="i"/>
+            </div>
+            <div class="a m" title="旋转">
+                <img src="./images/t.png" class="i"/>
+            </div>
+            <div class="a l" title="缩小">
+                <img src="./images/d.png" class="i"/>
+            </div>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="./images/6.jpg" class="img"/>
+        </div>
+        <div class="ab">
+            <div class="a f" title="放大">
+                <img src="./images/p.png" class="i"/>
+            </div>
+            <div class="a m" title="旋转">
+                <img src="./images/t.png" class="i"/>
+            </div>
+            <div class="a l" title="缩小">
+                <img src="./images/d.png" class="i"/>
+            </div>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="./images/7.jpg" class="img"/>
+        </div>
+        <div class="ab">
+            <div class="a f" title="放大">
+                <img src="./images/p.png" class="i"/>
+            </div>
+            <div class="a m" title="旋转">
+                <img src="./images/t.png" class="i"/>
+            </div>
+            <div class="a l" title="缩小">
+                <img src="./images/d.png" class="i"/>
+            </div>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="./images/8.jpg" class="img"/>
+        </div>
+        <div class="ab">
+            <div class="a f" title="放大">
+                <img src="./images/p.png" class="i"/>
+            </div>
+            <div class="a m" title="旋转">
+                <img src="./images/t.png" class="i"/>
+            </div>
+            <div class="a l" title="缩小">
+                <img src="./images/d.png" class="i"/>
+            </div>
+        </div>
+    </div>
+    <div class="pin">
+        <div class="box">
+            <img src="./images/9.jpg" class="img"/>
+        </div>
+        <div class="ab">
+            <div class="a f" title="放大">
+                <img src="./images/p.png" class="i"/>
+            </div>
+            <div class="a m" title="旋转">
+                <img src="./images/t.png" class="i"/>
+            </div>
+            <div class="a l" title="缩小">
+                <img src="./images/d.png" class="i"/>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
